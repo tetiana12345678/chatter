@@ -4,15 +4,17 @@ defmodule Bot do
   """
 
   @doc """
-  Hello world.
+  Here we would write a documentation for our answer function.
+  Also Examples section is a documentation and a test
+  all together.
 
   ## Examples
 
-      iex> Bot.hello
-      :world
+      iex> Bot.answer(%{"user" => "tanya", "body" => "hello"})
+      %{"user" => "bot", "body" => "hello tanya"}
 
   """
-  def hello do
-    :world
+  def answer(%{"user" => user, "body" => "hello" <> _rest}) do
+    %{"user" => "bot", "body" => "hello #{user}"}
   end
 end

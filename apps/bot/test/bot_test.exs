@@ -4,6 +4,7 @@ defmodule BotTest do
 
   test "bot says hello to the user" do
     payload = %{"user" => "tanya", "body" => "hello"}
-    assert Bot.answer(payload) == "hello tanya"
+    expected_payload = %{"user" => "bot", "body" => "hello tanya"}
+    assert Bot.answer(payload) == expected_payload
   end
 end
