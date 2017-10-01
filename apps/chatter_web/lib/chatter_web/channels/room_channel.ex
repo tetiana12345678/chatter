@@ -7,6 +7,9 @@ defmodule ChatterWeb.RoomChannel do
 
   def handle_in("new_message", payload, socket) do
     broadcast! socket, "new_message", payload
+    bot_payload = Bot.answer(payload)
+    :timer.sleep(100)
+    broadcast! socket, "new_message", bot_payload
     {:noreply, socket}
   end
 end

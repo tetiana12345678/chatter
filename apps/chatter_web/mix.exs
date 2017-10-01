@@ -12,7 +12,6 @@ defmodule ChatterWeb.Mixfile do
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      start_permanent: Mix.env == :prod,
-     aliases: aliases(),
      deps: deps()]
   end
 
@@ -38,14 +37,8 @@ defmodule ChatterWeb.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
-  end
-
-  # Aliases are shortcuts or tasks specific to the current project.
-  # For example, we extend the test task to create and migrate the database.
-  #
-  # See the documentation for `Mix` for more info on aliases.
-  defp aliases do
-    ["test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+     {:cowboy, "~> 1.0"},
+     {:bot, in_umbrella: true}
+    ]
   end
 end
