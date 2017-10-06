@@ -15,6 +15,11 @@ defmodule Bot do
 
   """
   def answer(%{"user" => user, "body" => "hello" <> _rest}) do
-    %{"user" => "bot", "body" => "hello #{user}"}
+    payload = %{"user" => "bot", "body" => "hello #{user}"}
+    {:ok, payload}
+  end
+
+  def answer(_) do
+    {:noreply, %{}}
   end
 end

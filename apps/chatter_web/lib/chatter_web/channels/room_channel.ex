@@ -9,7 +9,11 @@ defmodule ChatterWeb.RoomChannel do
     broadcast! socket, "new_message", payload
     bot_payload = Bot.answer(payload)
     :timer.sleep(100)
-    broadcast! socket, "new_message", bot_payload
+    case bot_payload do
+      {:ok, answer} ->
+        broadcast! socket, "new_message", answer
+      {:noreply, _} -> true
+    end
     {:noreply, socket}
   end
 end
